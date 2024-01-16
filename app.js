@@ -14,6 +14,7 @@ const labelDay = document.querySelector('#label-day');
 
 const age = (y,m,d) => {
   let ys, ms, ds;
+  let monthDays = [31,28, 31,30,31,30,31,31,30,31,30,31];
   const date = new Date();
 
   const currentYear = date.getFullYear() 
@@ -27,8 +28,11 @@ const age = (y,m,d) => {
     ys--;
     ms = 12+ms;
   }
-  if(d > currentDay)
+  if(d > currentDay){
     ms--;
+    ds = monthDays[ms] + ds;
+  }
+
   return [ys, ms, ds];
 }
 
@@ -107,8 +111,10 @@ const checkValid = () =>{
 }
 
 submit.addEventListener('click', () => {
-  let userAge = [1,2,3];
+  let userAge = ['','',''];
+
   if(checkEmpty(year.value, month.value, day.value) == false) return;
+  
   userAge = age(year.value, month.value, day.value);
   years.innerText = userAge[0];
   months.innerText = userAge[1];

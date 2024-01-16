@@ -49,6 +49,7 @@ body{
 }
 
 .input-container input{
+  outline: none;
   height: 70px;
   max-width: 200px;
   padding: 10px;
@@ -57,6 +58,11 @@ body{
   border-radius: 5px;
   border: 1px solid var(--Off-black);
 }
+
+/* .input-container input:active{
+
+} */
+
 .input-container label{
   /* color: var(--Smokey-grey); */
   letter-spacing: 1px;
