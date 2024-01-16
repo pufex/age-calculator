@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="Bez nazwy.png"> -->
   
   <title>Frontend Mentor | Age calculator app</title>
 </head>
@@ -14,30 +14,30 @@
       <div class="input-container">
         <label id="label-day" for="day">DAY</label>
         <input id="day" type="number">
-        <label class="error-label hidden">
+        <label id="invalid-day" class="error-label label-error hidden">
           Must be a valid day
         </label>
-        <label id="error-day"  class="error-label hidden">
+        <label id="empty-day"  class="error-label label-error hidden">
           This field is required
         </label>
       </div>
       <div class="input-container">
         <label id="label-month" for="month">MONTH</label>
         <input id="month" type="number">
-        <label class="error-label hidden">
+        <label id="invalid-month" class="error-label label-error hidden">
           Must be a valid month
         </label>
-        <label id="error-month" class="error-label hidden">
+        <label id="empty-month" class="error-label label-error hidden">
           This field is required
         </label>
       </div>
       <div class="input-container">
         <label id="label-year"  for="year">YEAR</label>
         <input id="year" type="number">
-        <label class="error-label hidden">
+        <label id="invalid-year" class="error-label label-error hidden">
           Must be a valid year
         </label>
-        <label id="error-year"  class="error-label hidden">
+        <label id="empty-year"  class="error-label label-error hidden">
           This field is required
         </label>
       </div>

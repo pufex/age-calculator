@@ -5,16 +5,20 @@ const months = document.querySelector('#months');
 const year = document.querySelector('#year');
 const years = document.querySelector('#years');
 const submit = document.querySelector('#submit');
-const errorYear = document.querySelector('#error-year');
-const errorMonth = document.querySelector('#error-month');
-const errorDay = document.querySelector('#error-day');
+const emptyYear = document.querySelector('#empty-year');
+const emptyMonth = document.querySelector('#empty-month');
+const emptyDay = document.querySelector('#empty-day');
+const invalidYear = document.querySelector('#invalid-year');
+const invalidMonth = document.querySelector('#invalid-month');
+const invalidDay = document.querySelector('#invalid-day');
 const labelYear = document.querySelector('#label-year');
 const labelMonth = document.querySelector('#label-month');
 const labelDay = document.querySelector('#label-day');
 
+let monthDays = [31,28, 31,30,31,30,31,31,30,31,30,31];
+
 const age = (y,m,d) => {
   let ys, ms, ds;
-  let monthDays = [31,28, 31,30,31,30,31,31,30,31,30,31];
   const date = new Date();
 
   const currentYear = date.getFullYear() 
@@ -36,84 +40,66 @@ const age = (y,m,d) => {
   return [ys, ms, ds];
 }
 
-const checkEmpty = (y,m,d) =>{
-  if(y === '' || m === '' || d === ''){
-    if(y === ''){
-      errorYear.classList.remove('hidden')
-      labelYear.classList.add('error-label')
-      year.style.border = "1px solid var(--Light-red)";
-    }else{
-      errorYear.classList.add('hidden')
-      labelYear.classList.remove('error-label')
-      year.style.border = "1px solid var(--Off-black)";
-    }
-    if(m === ''){
-      errorMonth.classList.remove('hidden')
-      labelMonth.classList.add('error-label')
-      month.style.border = "1px solid var(--Light-red)";
-    }else{
-      errorMonth.classList.add('hidden')
-      labelMonth.classList.remove('error-label')
-      month.style.border = "1px solid var(--Off-black)";
-    }
-    if(d === ''){
-      errorDay.classList.remove('hidden')
-      labelDay.classList.add('error-label')
-      day.style.border = "1px solid var(--Light-red)";
-    }else{
-      errorDay.classList.add('hidden')
-      labelDay.classList.remove('error-label')
-      day.style.border = "1px solid var(--Off-black)";
-    }
-    return false;
+year.addEventListener('change', () =>{
+  emptyYear.classList.add('hidden')
+  invalidYear.classList.add('hidden')
+  labelYear.classList.remove('error-label')
+  year.style.border = "1px solid var(--Off-black)";
+  if(year.value === ''){
+    emptyYear.classList.remove('hidden')
+    labelYear.classList.add('error-label')
+    year.style.border = "1px solid var(--Light-red)";
+    return
+  }else if(year.value > 2024 || year.value <= 0){
+    invalidYear.classList.remove('hidden')
+    labelYear.classList.add('error-label')
+    year.style.border = "1px solid var(--Light-red)";
+    return
   }
-  else{
-    if(y !== ''){
-      errorYear.classList.add('hidden')
-      labelYear.classList.remove('error-label')
-      year.style.border = "1px solid var(--Off-black)";
-    }
-    if(m !== ''){
-      errorMonth.classList.add('hidden')
-      labelMonth.classList.remove('error-label')
-      month.style.border = "1px solid var(--Off-black)";
-    }
-    if(d !== ''){
-      errorDay.classList.add('hidden')
-      labelDay.classList.remove('error-label')
-      day.style.border = "1px solid var(--Off-black)";
-    }
-    return true
+  
+})
+
+month.addEventListener('change', () =>{
+  emptyMonth.classList.add('hidden')
+  invalidMonth.classList.add('hidden')
+  labelMonth.classList.remove('error-label')
+  month.style.border = "1px solid var(--Off-black)";
+  if(month.value === ''){
+    emptyMonth.classList.remove('hidden')
+    labelMonth.classList.add('error-label')
+    month.style.border = "1px solid var(--Light-red)";
+    return
+  }else if(month.value > 12 || month.value <= 0){
+    invalidMonth.classList.remove('hidden')
+    labelMonth.classList.add('error-label')
+    month.style.border = "1px solid var(--Light-red)";
+    return
   }
-}
-const checkValid = () =>{
-  if(y === '' || m === '' || d === ''){
-    if(y === ''){
-      errorYear.classList.remove('hidden')
-      labelYear.classList.add('error-label')
-      year.style.border = "1px solid var(--Light-red)";
-    }
-    if(m === ''){
-      errorMonth.classList.remove('hidden')
-      labelMonth.classList.add('error-label')
-      month.style.border = "1px solid var(--Light-red)";
-    }
-    if(d === ''){
-      errorDay.classList.remove('hidden')
-      labelDay.classList.add('error-label')
-      day.style.border = "1px solid var(--Light-red)";
-    }
-    return false;
+  
+})
+
+day.addEventListener('change', () =>{
+  emptyDay.classList.add('hidden')
+  invalidDay.classList.add('hidden')
+  labelDay.classList.remove('error-label')
+  day.style.border = "1px solid var(--Off-black)";
+  if(Day.value === ''){
+    emptyDay.classList.remove('hidden')
+    labelDay.classList.add('error-label')
+    day.style.border = "1px solid var(--Light-red)";
+    return
+  }else if(Day.value < 0){
+    invalidDay.classList.remove('hidden')
+    labelDay.classList.add('error-label')
+    day.style.border = "1px solid var(--Light-red)";
+    return
   }
-  else{
-    return true
-  }
-}
+})
 
 submit.addEventListener('click', () => {
   let userAge = ['','',''];
 
-  if(checkEmpty(year.value, month.value, day.value) == false) return;
+  if(labelYear.classList.contains('error-label') == true || labelMonth.classList.contains('error-label') == true || labelDay.classList.contains('error-label') == true) return
   
   userAge = age(year.value, month.value, day.value);
   years.innerText = userAge[0];
