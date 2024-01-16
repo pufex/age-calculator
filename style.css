@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap');
+
+:root{
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+
+.hidden{
+  display: none;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Popins', sans-serif;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--Light-grey);
+}
+
+.container{
+  height: 600px;
+  width: 900px;
+  background: var(--White);
+  border-radius: 30px;
+  border-bottom-right-radius: 200px;
+  padding: 50px;
+}
+
+.inputs{
+  display: flex;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container input{
+  height: 70px;
+  max-width: 200px;
+  padding: 10px;
+  font-size: 3rem;
+  margin-right: 20px;
+  border-radius: 5px;
+  border: 1px solid var(--Off-black);
+}
+.input-container label{
+  /* color: var(--Smokey-grey); */
+  letter-spacing: 1px;
+}
+
+.error-label{
+  color: var(--Light-red);
+}
+
+.label-error{
+  letter-spacing: 0px;
+  color: var(--Light-red)
+}
+
+.error-input{
+  border: 1px solid var(--Light-red);
+}
+
+.button-container{
+  position: relative;
+}
+
+.line{
+  width: 100%;
+  margin: 30px 0;
+}
+
+.button{
+  position: absolute;
+  right: 10px;
+  top: -35px;
+  background-color: var(--Purple);
+  background-image: url('/assets/images/icon-arrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  border: none;
+
+}
+
+.age-header{
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.age-header span{
+  color: var(--Purple);
+}
